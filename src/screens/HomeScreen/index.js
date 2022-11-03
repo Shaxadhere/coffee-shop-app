@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { View, ScrollView, StyleSheet, Text, SafeAreaView, Image, Dimensions, TouchableOpacity } from 'react-native'
 import { SPACING } from '../../config/constants/spacing'
 import { BlurView } from "expo-blur"
@@ -13,6 +13,10 @@ const { width } = Dimensions.get("window")
 const HomeScreen = ({ navigation }) => {
     const [activeCategory, setActiveCategory] = useState(null)
     const [search, setSearch] = useState("")
+
+    useEffect(() => {
+        console.log(search)
+    }, [search])
     return (
         <View style={{ flex: 1, backgroundColor: colors.dark }}>
             <SafeAreaView>
@@ -64,7 +68,10 @@ const HomeScreen = ({ navigation }) => {
                     <View style={{ width: "80%", marginVertical: SPACING * 3 }}>
                         <Text style={{ color: colors.white, fontSize: SPACING * 3.5, fontWeight: "600" }}>Find the best coffee for you</Text>
                     </View>
-                    <SearchField onChange={(value) => setSearch(value)} value={search} />
+                    <SearchField
+                        onChange={(value) => setSearch(value)}
+                        value={search}
+                    />
                     <Categories onChange={(id) => setActiveCategory(id)} activeCategory={activeCategory} />
 
                     <View style={{
@@ -74,8 +81,13 @@ const HomeScreen = ({ navigation }) => {
                     }}>
                         {
                             coffees.filter((item) => {
-                                if (activeCategory === null) {
-                                    return true
+                                if (activeCategory === null && !search) {
+                                    return item
+                                }
+                                else if (activeCategory === null && search) {
+                                    if (item.name.toLowerCase().includes(search?.toLowerCase())) {
+                                        return item
+                                    }
                                 }
                                 return item.categoryId === activeCategory
                             }).map((item, index) =>

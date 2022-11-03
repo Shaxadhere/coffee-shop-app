@@ -13,7 +13,7 @@ const SearchField = ({ onChange, value }) => {
                 justifyContent: "center"
             }}>
                 <TextInput
-                    onChange={(e) => onChange(e.target.value)}
+                    onChangeText={text => onChange(text)}
                     value={value}
                     style={{
                         width: "100%",

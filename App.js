@@ -11,7 +11,7 @@ function App() {
       <Stack.Navigator initialRouteName="Home">
         <Stack.Screen
           options={{
-            header: () => <></>
+            headerShown: false,
           }}
           name="Home"
           component={HomeScreen}
@@ -19,7 +19,7 @@ function App() {
         <Stack.Screen
           name="Details"
           options={{
-            header: () => <></>
+            headerShown: false,
           }}
           component={CoffeeDetailScreen}
         />
