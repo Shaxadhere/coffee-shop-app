@@ -1,0 +1,27 @@
+{
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "**/Thumbs.db": true,
+        "**/node_modules": false,
+        "**/__tests__": true,
+        "**/.idea": true,
+        "**/.buckconfig": true,
+        "**/.eslintrc.js": true,
+        "**/.gitignore": true,
+        "**/.flowconfig": true,
+        "**/.node-version": true,
+        "**/.prettierrc.js": true,
+        "**/.ruby-version": true,
+        "**/.watchmanconfig": true,
+        "**/Gemfile": true,
+        "**/package-lock.json": true,
+        "**/yarn.lock": true,
+        "**/ios": true,
+        "**/babel.config.js": true,
+        "**/.bundle": true
+    }
+}
